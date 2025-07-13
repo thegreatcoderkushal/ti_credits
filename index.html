@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work Distribution</title>
+  <style>
+    :root {
+      --bg-color: #f0f0f0;
+      --card-color: #ffffff;
+      --text-color: #222;
+      --primary: #3b82f6;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --card-color: #2a2a2a;
+      --text-color: #f0f0f0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--primary);
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* Toggle Switch */
+    .toggle-switch {
+      position: relative;
+      width: 55px;
+      height: 28px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ffffffaa;
+      transition: 0.4s;
+      border-radius: 34px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.3);
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "🌙";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 3px;
+      background-color: #3b82f6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: #00000055;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+      content: "☀️";
+      background-color: gold;
+    }
+
+    .export-btn {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background: white;
+      color: var(--primary);
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .export-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-color);
+      border-radius: 20px;
+      padding: 30px;
+      width: 360px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.12);
+    }
+
+    .name {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      margin-top: 15px;
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Work Distribution
+    <div class="controls">
+      <!-- Dark Mode Toggle -->
+      <label class="toggle-switch">
+        <input type="checkbox" id="darkToggle" onclick="toggleDarkMode()">
+        <span class="slider"></span>
+      </label>
+      <button class="export-btn" onclick="downloadPDF()">📄 Export to PDF</button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Kushal Ajwani Card -->
+    <div class="card">
+      <div class="name">Kushal Ajwani</div>
+      <div class="section-title">Candidate:</div>
+      <ul>
+        <li>Candidate Applying</li>
+        <li>My applications feature in Candidate</li>
+      </ul>
+
+      <div class="section-title">Authentication:</div>
+      <ul>
+        <li>Login</li>
+        <li>Signup</li>
+        <li>Email verification</li>
+        <li>Forgot password</li>
+        <li>Change password</li>
+      </ul>
+
+      <div class="section-title">Organizational admin:</div>
+      <ul>
+        <li>Pending Approvals</li>
+        <li>Manage internships</li>
+        <li>Manage Applications</li>
+        <li>Manage Projects</li>
+        <li>Manage project Assignments</li>
+        <li>Company Stats</li>
+        <li>Attendance page UI</li>
+      </ul>
+
+      <div class="section-title">System admin:</div>
+      <ul>
+        <li>Pending HR approvals</li>
+        <li>Manage internships</li>
+        <li>Platform Stats</li>
+      </ul>
+
+      <div class="section-title">Developer:</div>
+      <ul>
+        <li>Available Projects</li>
+        <li>Projects</li>
+        <li>Volunteer Projects</li>
+        <li>Manage Assignments</li>
+        <li>Assigned Projects</li>
+        <li>Attendance UI</li>
+      </ul>
+
+      <div class="section-title">Intern:</div>
+      <ul>
+        <li>Assigned Projects</li>
+        <li>Available Projects</li>
+        <li>Assignments</li>
+        <li>Attendance UI and automarking intern absent if he/she forgets checking in</li>
+      </ul>
+    </div>
+
+    <!-- Chiranjeevi Card -->
+    <div class="card">
+      <div class="name">Chiranjeevi</div>
+
+      <div class="section-title">Developer:</div>
+      <ul>
+        <li>Project chat</li>
+        <li>Report</li>
+        <li>Attendance feature</li>
+      </ul>
+
+      <div class="section-title">Intern:</div>
+      <ul>
+        <li>Project chat</li>
+        <li>Report</li>
+        <li>Attendance feature</li>
+      </ul>
+
+      <div class="section-title">Organizational Admin:</div>
+      <ul>
+        <li>Project chat</li>
+        <li>Attendance feature</li>
+      </ul>
+
+      <div class="section-title">Profile Management:</div>
+      <ul>
+        <li>Profile Management of all users</li>
+      </ul>
+
+      <div class="section-title">General UI:</div>
+      <ul>
+        <li>Home page</li>
+        <li>About page UI</li>
+      </ul>
+    </div>
+
+    <!-- Pradeep Card -->
+    <div class="card">
+      <div class="name">Pradeep</div>
+
+      <div class="section-title">UI Contributions:</div>
+      <ul>
+        <li>Home page UI</li>
+        <li>Project Chat UI</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const toggle = document.getElementById('darkToggle');
+      body.classList.toggle('dark');
+    }
+
+    function downloadPDF() {
+      const originalTitle = document.title;
+      document.title = 'Work Distribution';
+
+      const printWindow = window.open('', '', 'height=700,width=900');
+      printWindow.document.write('<html><head><title>Work Distribution</title>');
+      printWindow.document.write(document.querySelector('style').outerHTML);
+      printWindow.document.write('</head><body>');
+      printWindow.document.write(document.body.innerHTML);
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+
+      printWindow.focus();
+      setTimeout(() => {
+        printWindow.print();
+        printWindow.close();
+        document.title = originalTitle;
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
